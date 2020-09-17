@@ -356,7 +356,13 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		chmod -R 777 /config/hook
 
 		# Python modules needed for hook processing
-		apt-get -y install python3-pip cmake
+		apt-get -y install cmake
+		
+		# For various reasons (https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/1772746) ubuntu bionic packages an ancient
+		# version of pip and won't update it. So, we have to install this way to get latest. We need latest, because we can't install
+		# open cv 4.3+ packages without it (something about package format changes)
+		curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+		python get-pip.py
 
 		# pip3 will take care of installing dependent packages
 		pip3 install future
