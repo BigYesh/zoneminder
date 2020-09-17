@@ -356,22 +356,22 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		chmod -R 777 /config/hook
 
 		# Python modules needed for hook processing
-		apt-get -y install cmake
+		apt-get -y install cmake python3-distutils
 		
 		# For various reasons (https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/1772746) ubuntu bionic packages an ancient
 		# version of pip and won't update it. So, we have to install this way to get latest. We need latest, because we can't install
 		# open cv 4.3+ packages without it (something about package format changes)
 		curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 		python3 get-pip.py
-		pip --version
+		pip3 --version
 
 		# pip will take care of installing dependent packages
-		pip install future
-		pip install /root/zmeventnotification
-		pip install opencv-contrib-python
+		pip3 install future
+		pip3 install /root/zmeventnotification
+		pip3 install opencv-contrib-python
 	else
-		pip uninstall -y zmes-hooks
-		pip install /root/zmeventnotification
+		pip3 uninstall -y zmes-hooks
+		pip3 install /root/zmeventnotification
 	fi
     rm -rf /root/zmeventnotification/zmes_hook_helpers
 
@@ -507,7 +507,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 
 		# Install for face recognition
 		apt-get -y install libopenblas-dev liblapack-dev libblas-dev
- 		pip install face_recognition
+ 		pip3 install face_recognition
 	fi
 
 	echo "Hook installation completed"
