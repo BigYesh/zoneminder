@@ -364,6 +364,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 		python3 get-pip.py
 		pip3 --version
+		pip3 install pyzmq
 
 		# pip will take care of installing dependent packages
 		pip3 install future
@@ -371,6 +372,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		pip3 install opencv-contrib-python
 	else
 		pip3 uninstall -y zmes-hooks
+		pip3 install pyzmq
 		pip3 install /root/zmeventnotification
 	fi
     rm -rf /root/zmeventnotification/zmes_hook_helpers
