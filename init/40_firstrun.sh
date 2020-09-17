@@ -356,7 +356,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		chmod -R 777 /config/hook
 
 		# Python modules needed for hook processing
-		apt-get -y install cmake python3-distutils
+		apt-get -y install cmake python3-distutils python3-dev
 		
 		# For various reasons (https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/1772746) ubuntu bionic packages an ancient
 		# version of pip and won't update it. So, we have to install this way to get latest. We need latest, because we can't install
@@ -365,6 +365,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		python3 get-pip.py
 		pip3 --version
 		pip3 install pyzmq
+		pip3 install pyzm
 
 		# pip will take care of installing dependent packages
 		pip3 install future
