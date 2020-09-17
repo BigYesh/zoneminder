@@ -363,14 +363,15 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		# open cv 4.3+ packages without it (something about package format changes)
 		curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 		python get-pip.py
+		pip --version
 
-		# pip3 will take care of installing dependent packages
-		pip3 install future
-		pip3 install /root/zmeventnotification
-		pip3 install opencv-contrib-python
+		# pip will take care of installing dependent packages
+		pip install future
+		pip install /root/zmeventnotification
+		pip install opencv-contrib-python
 	else
-		pip3 uninstall -y zmes-hooks
-		pip3 install /root/zmeventnotification
+		pip uninstall -y zmes-hooks
+		pip install /root/zmeventnotification
 	fi
     rm -rf /root/zmeventnotification/zmes_hook_helpers
 
@@ -506,7 +507,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 
 		# Install for face recognition
 		apt-get -y install libopenblas-dev liblapack-dev libblas-dev
- 		pip3 install face_recognition
+ 		pip install face_recognition
 	fi
 
 	echo "Hook installation completed"
