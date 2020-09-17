@@ -362,7 +362,7 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 		# version of pip and won't update it. So, we have to install this way to get latest. We need latest, because we can't install
 		# open cv 4.3+ packages without it (something about package format changes)
 		curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-		python get-pip.py
+		python3 get-pip.py
 		pip --version
 
 		# pip will take care of installing dependent packages
